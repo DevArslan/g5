@@ -1,0 +1,33 @@
+<ng-container *ngIf="!loading; else loadingTmp">
+
+    <table *ngIf="data?.length; else noData" class="w-100 border">
+        <tr>
+            <th class="border p-2" *ngFor="let column of columns">{{ column }}</th>
+        </tr>
+
+        <ng-container *ngFor="let row of data; trackBy: trackBy">
+            <ng-container *ngTemplateOutlet="rowTmp; context: { $implicit: row }"></ng-container>
+        </ng-container>
+
+    </table>
+
+    <ng-template #noData>
+        No Data
+    </ng-template>
+
+</ng-container>
+
+<ng-template #rowTmp let-row>
+    <tr class="border">
+        <ng-container *ngFor="let cell of cells; trackBy: trackBy" >
+            <td class="border p-2">
+                <ng-container *ngTemplateOutlet="cell; context: { $implicit: row }"></ng-container>
+            </td>
+        </ng-container>
+    </tr>
+</ng-template>
+
+<ng-template #loadingTmp>
+    <app-loader></app-loader>
+</ng-template>
+

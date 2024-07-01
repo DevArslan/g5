@@ -1,0 +1,26 @@
+<div class="w-100 p-5">
+    <div class="m-auto p-5 bg-light rounded border w-25 card">
+        <ng-container *ngIf="!loading; else loadingTmp">
+            <img *ngIf="user" alt="{{ user?.login }}'s avatar" class="rounded" height="150" ngSrc="{{ user?.avatar_url }}"
+                 width="150">
+
+            <div class="row mt-4">
+                <div class="col-3"><b>Login:</b></div>
+                <div class="col-9">{{ user?.login }}</div>
+            </div>
+            <div class="row ">
+                <div class="col-3"><b>Type:</b></div>
+                <div class="col-9">{{ user?.type }}</div>
+            </div>
+            <div class="row ">
+                <div class="col-3"><b>Link:</b></div>
+                <div class="col-9">{{ user?.html_url }}</div>
+            </div>
+        </ng-container>
+
+        <ng-template #loadingTmp>
+            <app-loader></app-loader>
+        </ng-template>
+
+    </div>
+</div>

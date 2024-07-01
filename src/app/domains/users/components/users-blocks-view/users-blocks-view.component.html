@@ -1,0 +1,17 @@
+<app-list [data]="users" [columns]="columns" [trackBy]="trackBy">
+    <ng-template #cell let-row>
+        <a routerLink="/users/{{row.id}}">{{ row.login }}</a>
+    </ng-template>
+
+    <ng-template #cell let-row>
+        <img ngSrc="{{ row.avatar_url }}" alt="{{ row.login }}'s avatar" width="50" height="50">
+    </ng-template>
+
+    <ng-template #cell let-row>
+        <a>{{ row.type }}</a>
+    </ng-template>
+
+    <ng-template #cell let-row>
+        <a>{{ row.score }}</a>
+    </ng-template>
+</app-list>

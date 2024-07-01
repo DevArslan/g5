@@ -1,0 +1,26 @@
+<ng-container *ngIf="!loading; else loadingTmp">
+    <div *ngIf="data?.length; else noData" class="d-grid border-end border-top" [style.grid-template-columns]="gridTemplateColumns">
+        <div class="border-start p-2 border-bottom" *ngFor="let column of columns"><b>{{ column }}</b></div>
+
+        <ng-container *ngFor="let row of data; trackBy: trackBy">
+            <ng-container *ngTemplateOutlet="rowTmp; context: { $implicit: row }"></ng-container>
+        </ng-container>
+    </div>
+
+    <ng-template #noData>
+        No Data
+    </ng-template>
+
+</ng-container>
+
+<ng-template #loadingTmp>
+    <app-loader></app-loader>
+</ng-template>
+
+<ng-template #rowTmp let-row>
+    <ng-container *ngFor="let cell of cells; trackBy: trackBy">
+        <div class="border-start border-bottom p-2 d-flex align-items-center">
+            <ng-container *ngTemplateOutlet="cell; context: { $implicit: row }"></ng-container>
+        </div>
+    </ng-container>
+</ng-template>

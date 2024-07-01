@@ -1,0 +1,4 @@
+<div class="input-group">
+    <input type="text" class="form-control" placeholder="Write here" [(ngModel)]="value">
+    <button class="btn btn-outline-secondary" type="button" (click)="search.emit(value)" [disabled]="loading || !value.length">Search</button>
+</div>

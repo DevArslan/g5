@@ -1,0 +1,17 @@
+<div class="m-auto p-5 bg-light rounded border w-75" style="min-width: 500px">
+    <div class="w-50 mb-4">
+        <app-search (search)="setUsers($event)" [loading]="loading"></app-search>
+    </div>
+
+    <ng-container *ngTemplateOutlet="isTableView ? tableTmp : blocksTmp;"></ng-container>
+
+    <ng-template #tableTmp>
+        <app-users-table-view [users]="users" [columns]="columns"></app-users-table-view>
+    </ng-template>
+
+    <ng-template #blocksTmp>
+        <app-users-blocks-view [users]="users" [columns]="columns"></app-users-blocks-view>
+    </ng-template>
+
+</div>
+
